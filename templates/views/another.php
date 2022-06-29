@@ -59,7 +59,7 @@ echo '<div'.$classes.$inline_style.'>';
 			 * NOTE: last argument of atl_get_tax_terms() is will it be a link or no.
 			 * TRUE if you want term permalink, FALSE or remove the argument if not a link
 			 */
-			echo '<div class="item-features">'.$mfunc->atl_get_tax_terms( $plan_features, 'feature_list', TRUE ).'</div>';
+			echo '<div class="item-features">'.$mfunc->atl_get_tax_terms( $plan_features, 'feature_list', FALSE ).'</div>';
 		}
 
 		// Summary

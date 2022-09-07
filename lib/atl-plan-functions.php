@@ -39,14 +39,22 @@ class ATLSubMain {
 				}
 
 			}*/
+
+			// fetch the terms
+			$ter = get_the_terms( get_the_ID(), 'feature_list' );
+			foreach ( $ter as $term ) {
+				$tnames[] = $term->name;
+			}
+
 			$pprice = get_field( 'plan-price' );
 			$pdeal = get_field( 'plan-deal' );
-
+			
 			$bars = array(
 				'plan_label'					=> get_field( 'plan-label' ),
 				'plan_price'					=> !empty( $pprice ) ? '$'.number_format( get_field( 'plan-price' ), 2, '.', ',') : 'Call for Pricing',
-				'plan_deal'						=> !empty( $pdeal ) ? '$'.number_format( get_field( 'plan-deal' ), 2, '.', ',') : 'Call for Pricing',
-				'plan_features'					=> get_field( 'plan-features' ),
+				'plan_deal'						=> !empty( $pdeal ) ? '$'.number_format( get_field( 'plan-deal' ), 2, '.', ',') : '',
+				//'plan_features'					=> get_field( 'plan-features' ),
+				'plan_features'					=> $tnames,
 				'plan_summary'					=> get_field( 'plan-summary' ),
 				'plan_pic'						=> get_field( 'plan-pic' ),
 				'plan_pic_size'					=> get_field( 'plan-pic-size' ),
@@ -183,13 +191,16 @@ class ATLSubMain {
 	public function atl_get_tax_terms( $tid, $taxname, $anchor = FALSE ) {
 
 		$out = '';
-		
+
 		foreach( $tid as $term ) {
-			$t = get_term_by( 'term_id', $term, $taxname );
-			if( $anchor !== FALSE ) {
-				$out .= '<div class="item-term"><a href="'.get_term_link( $t->term_id ).'">'.$t->name.'</a></div>';
-			} else {
-				$out .= '<div class="item-term">'.$t->name.'</div>';
+			//$t = get_term_by( 'term_id', $term, $taxname );
+			$t = get_term_by( 'slug', $term, $taxname );
+			if( is_object( $t ) ) {
+				if( $anchor !== FALSE ) {
+					$out .= '<div class="item-term"><a href="'.get_term_link( $t->term_id ).'">'.$t->name.'</a></div>';
+				} else {
+					$out .= '<div class="item-term">'.$t->name.'</div>';
+				}
 			}
 			
 		}

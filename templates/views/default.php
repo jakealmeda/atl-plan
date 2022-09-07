@@ -44,6 +44,9 @@ echo '<div'.$classes.$inline_style.'>';
 		$plan_price = $mfunc->setup_array_validation( 'plan_price', $bars );
 		if( !empty( $plan_price ) && in_array( 'plan-price', $bsf ) ) {
 			echo '<div class="item-price">'.$plan_price.'</div>';
+		} else {
+			// if empty or unchecked, show "call for pricing"
+			echo '<div class="item-price">Call for Pricing</div>';
 		}
 
 		// Deal

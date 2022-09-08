@@ -197,9 +197,9 @@ class ATLSubMain {
 			$t = get_term_by( 'slug', $term, $taxname );
 			if( is_object( $t ) ) {
 				if( $anchor !== FALSE ) {
-					$out .= '<div class="item-term"><a href="'.get_term_link( $t->term_id ).'">'.$t->name.'</a></div>';
+					$out .= '<li><a href="'.get_term_link( $t->term_id ).'">'.$t->name.'</a></li>';
 				} else {
-					$out .= '<div class="item-term">'.$t->name.'</div>';
+					$out .= '<li>'.$t->name.'</li>';
 				}
 			}
 			

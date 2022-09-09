@@ -35,7 +35,7 @@ echo '<div'.$classes.$inline_style.'><div class="wp-block-group__inner-container
 	if( !empty( $bsf ) ) :
 
 		// Group
-		$plan_group = get_field( 'plan-group', $pid );
+		$plan_group = $mfunc->setup_array_validation( 'plan_group', $bars );
 		if( !empty( $plan_group ) ) {
 			echo '<div class="item-group">'.$plan_group.'</div>';
 		}

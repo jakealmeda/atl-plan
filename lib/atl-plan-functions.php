@@ -51,9 +51,10 @@ class ATLSubMain {
 			
 			$bars = array(
 				'plan_label'					=> get_field( 'plan-label' ),
-				'plan_price'					=> !empty( $pprice ) ? '$'.number_format( get_field( 'plan-price' ), 2, '.', ',') : 'Call for Pricing',
-				'plan_deal'						=> !empty( $pdeal ) ? '$'.number_format( get_field( 'plan-deal' ), 2, '.', ',') : '',
+				'plan_price'					=> !empty( $pprice ) ? '$'.number_format( $pprice, 2, '.', ',') : 'Call for Pricing',
+				'plan_deal'						=> !empty( $pdeal ) ? '$'.number_format( $pdeal, 2, '.', ',') : '',
 				//'plan_features'					=> get_field( 'plan-features' ),
+				'plan_group'					=> get_field( 'plan-group' ),
 				'plan_features'					=> $tnames,
 				'plan_summary'					=> get_field( 'plan-summary' ),
 				'plan_pic'						=> get_field( 'plan-pic' ),

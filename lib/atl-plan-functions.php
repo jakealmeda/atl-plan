@@ -42,8 +42,14 @@ class ATLSubMain {
 
 			// fetch the terms
 			$ter = get_the_terms( get_the_ID(), 'feature_list' );
-			foreach ( $ter as $term ) {
-				$tnames[] = $term->name;
+			if( is_array( $ter ) && !empty( $ter ) ) {
+
+				foreach ( $ter as $term ) {
+					$tnames[] = $term->name;
+				}
+
+			} else {
+				$tnames = '';
 			}
 
 			$pprice = get_field( 'plan-price' );
